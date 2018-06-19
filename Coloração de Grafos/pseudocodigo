@@ -1,0 +1,24 @@
+[3/5 19:45] Petrúcio Amaral: //PSEUDO CÓDIGO ALGORITMO DE JOHNSON PARA COLORAÇÃO DE GRAFOS
+
+SEJA:
+
+i -> valor da cor
+Vzao-> conjunto de vértices de entrada
+U -> conjunto dos vértices não coloridos
+W -> conjunto independente (conjunto de vértices em um grafo, tais que estes não possuam nenhuma aresta em comum.)
+vzin -> vértice de menor grau do grafo (o grau de um vértice é determinado pelo número de arestas que este possui) 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+i <- 1
+U <- Vzao
+ENQUANTO (U != vazio) FAÇA:
+	W <- U
+	ENQUANTO (W != vazio) FAÇA:
+		achar vzin
+		colorir vzin com a cor i
+		W <- W - vzin - (todos os vértices que estão ligados a vzin e suas respectivas arestas)
+		U <- U - vzin
+	i <- i + 1
+devolver o grafo colorido
+
