@@ -144,9 +144,9 @@ int main(){
         cor_atual++;
     }
 
-    /*for(int i = 0; i < dim; i++){
+    for(int i = 0; i < dim; i++){
         cout << "vetCores[" << i << "]: " << vetCores[i] << endl;
-    }*/
+    }
     cout << "Tempo de execução: " << ((double)(clock() - tStart)/CLOCKS_PER_SEC)/4 << " segundos" << endl;
     //ompwtime
 
