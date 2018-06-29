@@ -22,3 +22,23 @@ ENQUANTO (U != vazio) FAÇA:
 	i <- i + 1
 devolver o grafo colorido
 
+\subsubsection{Pseudo código}
+\begin{algorithm}[H]
+	\SetAlgoLined
+	\Inicio{
+		\Entrada{V: Conjunto de vértices de entrada não coloridos}
+		\Saida{V: Conjunto de vértices coloridos}
+        Iniciar a variável i para um valor inicia de cor
+        U <- V
+        \Enquanto{U != vazio} Faça:
+        	W <- U
+            \Enquanto{W != vazio} Faça:
+            v <- vértice de menor grau no subgrafo W
+            colorir v com a cor atual i no grafo V
+            W <- W - v - (todos os vértices que se conecta com v)
+            U <- U - v
+        
+	}
+	\label{alg:johnson}
+	\caption{\textsc{Algoritmo de Johnson adaptado para coloração de vértices de um grafo}}
+\end{algorithm}

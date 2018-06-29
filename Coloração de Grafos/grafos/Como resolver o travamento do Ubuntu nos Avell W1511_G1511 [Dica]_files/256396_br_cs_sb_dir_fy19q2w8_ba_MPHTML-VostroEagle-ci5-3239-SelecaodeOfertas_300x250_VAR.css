@@ -1,0 +1,630 @@
+/*-------------------------------------
+    Reset
+---------------------------------------*/
+
+/******Basic settings**********/
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    box-sizing: border-box;
+  text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%; 
+  -webkit-text-size-adjust: 100%; 
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+img{
+  border: 0px;
+}
+a{
+  text-decoration: none;
+}
+body{
+    font-family: 'Roboto', sans-serif; color: #444444;
+}
+.font-preloader{
+  font-family:'Roboto';
+  visibility:hidden;
+  width:0; 
+  height:0;
+}
+#frame_one, #frame_two,#frame_three,#frame_four,#frame_five {
+  width: 100%;
+  height: 100%;
+}
+
+/*-------------------------------------
+  Layout
+---------------------------------------*/
+
+#ad {
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#banner {
+  position: absolute;
+  background: #eeeeee;
+  display: block;
+  width: 300px;
+  height: 250px;
+  overflow: hidden;
+  cursor: pointer;
+  visibility: hidden; 
+  border: 1px solid #666666;
+  -webkit-box-sizing: border-box;  
+          box-sizing: border-box;  
+}
+
+#clickTAG {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+.ie-fallback{
+  position: absolute;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+}
+
+/*-------------------------------------
+  Frame One frame duration: 3.5s
+---------------------------------------*/
+
+.bg{
+  display: block;
+  width: 300px;
+  height: 250px;
+  top: 0px;
+  left: 0px;
+  background:  #6ea204;
+  position: absolute;
+}
+
+.dell-logo-w {
+  top: 10px;
+  right: 10px;
+  position:absolute;
+}
+
+.dell-text-1{
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  color: #fff;
+  text-align:center;
+  top: 20px;
+  right:10px;
+  text-transform: uppercase;
+  position: absolute;
+}
+
+.dell-text-1 span{
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 300;
+  letter-spacing: 0.22em;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.vendor-logo {
+  bottom:10px;
+  left: 10px;
+  position:absolute;
+}
+
+.frame-1-text-1{
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: #fff;
+  text-align:center;
+  top: 80px;
+  width: 100%;
+  text-transform: uppercase;
+  position: absolute;
+}
+
+.frame-1-text-1 span{
+  font-size: 30px;
+  font-weight: 300;
+  letter-spacing: 0.11em;
+  color: #fff;
+}
+
+.frame-1-text-1 span2{
+  font-size: 60px;
+  font-weight: 300;
+  letter-spacing: 0.11em;
+  color: #fff;
+}
+
+.frame-1-text-2{
+  font-size: 100px;
+  line-height: 76px;
+  color: #ffffff;
+  /*text-align:center;*/
+  letter-spacing: 0.11em;
+  font-weight: 300;
+  top: 90px;
+  left: 50px;
+  width: 100%;
+  text-transform: uppercase;
+  position: absolute;
+}
+
+.frame-1-text-2-up1 {
+  font-size: 30px;
+  line-height: 30px;
+  font-weight: 300;
+  color: #ffffff;
+  text-transform: uppercase;
+  text-align:center;    
+  top: 107px;
+  left: 65px;
+  position: absolute;
+}
+.frame-1-text-2-up1 span{
+  font-size: 80px;
+  font-weight: 300;
+  color: #ffffff;
+  text-transform: uppercase;
+  top: 17px;
+  left: 40px;
+  position: absolute;
+}
+.frame-1-text-2-up {
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 300;
+  color: #ffffff;
+  text-transform: uppercase;
+  top: 87px;
+  left: 90px;
+  position: absolute;
+}
+.frame-1-text-3{
+  font-size: 20px;
+  line-height: 30px;
+  color: #ffffff;
+  font-weight: 300;
+  top: 120px;
+  left: 90px;
+  width: 298px;
+  text-transform: uppercase;
+  position: absolute;
+}
+
+.cta{
+  position: absolute;
+  color:  #6ea204;
+  text-align: center;
+  background: #fff;
+  right: 10px;
+  bottom: 10px;
+  display: block;
+  z-index: 99;
+  padding: 7px 10px 6px 10px;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: bolder;
+  vertical-align: middle;
+}
+
+@-moz-document url-prefix() {
+  .cta {padding: 6px 10px 7px 10px;}
+}
+
+.cta2{
+  position: absolute;
+  color: #ffffff;
+  text-align: center;
+  background:  #6ea204;
+  right: 10px;
+  bottom: 10px;
+  display: block;
+  z-index: 99;
+  padding: 7px 10px 6px 10px;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: bolder;
+  vertical-align: middle;
+}
+
+@-moz-document url-prefix() {
+  .cta2 {padding: 6px 10px 7px 10px;}
+}
+
+.funding-text{
+  width: 120px;
+  font-size: 12px;
+  line-height: 14px;
+  bottom:8px;
+  left: 75px;
+  color: #fff;
+  z-index: 2;
+  position:absolute;
+}
+
+.funding-text sup{
+  font-size: 8px;
+  line-height: 10px;
+}
+
+/*-------------------------------------
+  Frame two  frame duration: 2.3s
+---------------------------------------*/
+.dell-logo {
+  top: 12px;
+  right: 12px;
+  position:absolute;
+}
+
+.main-badge{
+  top:15px;
+  left: 61px;
+  position:absolute;
+}
+
+.product1{
+  top: 45px;
+  left: 105px;
+  position:absolute;
+}
+
+.frame-2-pname{
+  top: 190px;
+  left:95px;
+  font-size: 12px;
+  line-height:14px;
+  text-align:center;
+  color: #444444;
+  position:absolute;
+}
+
+.scrn-size{
+  font-size: 12px;
+  line-height: 14px;
+  top:60px;
+  left: 30px;
+  color: #444444;
+  z-index: 2;
+  position:absolute;
+
+}
+/*-------------------------------------
+  Frame Three  frame duration: 2.8s
+---------------------------------------*/
+.frame-3-text-1{
+  width: 105%;
+  font-size: 15px;
+  font-weight: 300;
+  text-align: center;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  top: 10px;
+  left:-15px;
+  position: absolute;
+
+}
+.frame-3-pname{
+  top: 190px;
+  left:85px;
+  font-size: 12px;
+  line-height:14px;
+  text-align:center;
+  color: #444444;
+  position:absolute;
+}
+
+.product2{
+  top: 50px;
+  left: 105px;
+  position:absolute;
+
+}
+
+/*-------------------------------------
+ Frame Four  frame duration: 3.2s
+---------------------------------------*/
+.product3{
+  top: 45px;
+  left: 70px;
+  position:absolute;
+
+}
+
+.frame-4-text-1{
+  width: 100%;
+  font-size: 16px;
+  font-weight: 300;
+  text-align: center;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  top: 10px;
+  left:-25px;
+  position: absolute;
+}
+
+.frame-4-text{
+  top: 78px;
+  left: 175px;
+  position:absolute;
+  width:150px;   
+}
+
+.frame-4-text1 { 
+  font-size: 11px;
+  color: #444444;
+  display: block; 
+}
+
+.frame-4-text2 {
+  font-size: 10px; 
+  color:  #444444;
+  display: block;
+  line-height:11px;
+  font-weight: 400;
+}
+.frame-4-text2 span{
+  font-size: 16px; 
+  color:  #6ea204;
+  line-height:15px;
+  font-weight: bold;
+}
+
+.frame-4-text3 {
+  font-size: 11px;
+  font-weight: 700;
+  color: #444444;
+  margin-top: 5px;
+   margin-bottom:2px;   
+  display: block;
+}
+
+.frame-4-text4{
+  font-size: 11px;
+  color: #444;
+  display: block;
+  padding-bottom: 4px;
+
+}
+.frame-4-text4 span{
+  font-size: 16px; 
+  color:  #6ea204;
+  line-height:15px;
+  font-weight: bold;
+}
+
+.price {
+  line-height:15px;
+}
+
+.frame-4-text2 sup {
+  font-size:10px;
+  line-height:12px;
+}
+
+.funding-text2{
+  width: 120px;
+  font-size: 12px;
+  line-height: 14px;
+  bottom:8px;
+  left: 75px;
+  color: #444444;
+  z-index: 2;
+  position:absolute;
+
+}
+
+.funding-text2 sup{
+  font-size: 8px;
+  line-height: 10px;
+}
+
+
+/*-------------------------------------
+  Frame Five  frame duration: 3.2s
+---------------------------------------*/
+.product4{
+  top: 65px;
+  left: 100px;
+  position:absolute;
+}
+.violator{
+  top: 60px;
+  left: 65px;
+  /*-webkit-transform: rotate(-5deg);
+  transform: rotate(-5deg);*/    
+  position:absolute;
+
+}
+
+.badge-last{
+  top:9px;
+  left: 42px;
+  position:absolute;
+}
+
+.frame-5-text-1{
+  width: 100%;
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 300;
+  text-align: center;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  top: 38px;
+  left:-25px;
+  position: absolute;
+}
+
+.frame-5-text-1 span{
+  color:  #6ea204;    
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 35px;    
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.funding-text3{
+  width: 120px;
+  font-size: 12px;
+  line-height: 14px;
+  bottom:8px;
+  left: 60px;
+  color: #444444;
+  z-index: 2;
+  position:absolute;
+
+}
+
+.funding-text3 sup{
+  font-size: 8px;
+  line-height: 10px;
+}
+
+.frame-5-text{
+  top: 85px;
+  left: 175px;
+  position:absolute;
+}
+
+.frame-5-text1 { 
+  font-size: 11px;
+  color: #444444;
+  display: block;
+}
+
+.frame-5-text2 {
+  font-size: 10px; 
+  color:  #444444;
+  display: block;
+  line-height:11px;
+  font-weight: 400;
+}
+.frame-5-text2 span{
+  font-size: 16px; 
+  color:  #6ea204;
+  line-height:15px;
+  font-weight: bold;
+}
+
+
+.frame-5-text3 {
+  font-size: 11px;
+  font-weight: 700;
+  color: #444444;
+  margin-top: 3px;
+  display: block;
+}
+
+.frame-5-text4{
+  font-size: 10px;
+  font-weight: 400;
+  color: #444444;
+  margin-bottom:5px;
+  display: block;
+
+}
+.frame-5-text4 span{
+  font-size: 16px; 
+  color:  #6ea204;
+  line-height:15px;
+  font-weight: bold;
+}
+
+.price {
+  line-height:15px;
+}
+
+.frame-5-text2 sup {
+  font-size:10px;
+  line-height:12px;
+}
+
+.shipping{
+  font-size: 10px;
+  line-height: 14px;
+  bottom:45px;
+  right: 35px;
+  color: #444444;
+  z-index: 2;
+  position:absolute;
+
+}
+.vendor-logo2 {
+  bottom:10px;
+  left: 10px;
+  position:absolute;
+}
+/*Roll over*/
+#roll-cta {
+  position: absolute;
+  color: #444;
+  bottom: 42px;
+  left: 208px;
+  z-index: 99999;
+  width: 80px;
+  height: 15px;
+
+
+}
+#legal {
+  position: absolute;
+  width: 300px;
+  height: 250px;
+  background:#fff;
+  top:-1000px;
+  z-index: 999;
+}
+#legal-text {
+  position: absolute;
+  color: #444;
+  width: 295px;
+  height: 150px;
+  font-size: 8px;
+  line-height:13px;
+  padding: 10px 13px;
+  
+}
+#rolltext {
+  position: absolute;
+  z-index: 9;
+  bottom: 44px;
+  right: 10px;
+  font-size: 9px;
+}
+
+#flex_bg{
+  background: #ff7fff;
+  padding: 8px 10px;
+  top: 0px;
+  left: 85px;
+  position: absolute;
+}
+
+.temp-text{
+  font-size: 22px;
+  font-weight: 300;
+  text-align: center;
+  color: #444444;
+  text-transform: uppercase;
+}

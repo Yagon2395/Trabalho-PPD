@@ -7,10 +7,11 @@
 using namespace std;
 
 int dim;
-int *vetCores;
+int *vetcores;
+string arquivo = "grafo2500.txt";
 
 int retornaDimensao(){
-  ifstream arq ("grafo.txt",std::ifstream::in);
+  ifstream arq (arquivo.c_str(),std::ifstream::in);
   int d = 0;
   if(arq.is_open()){
     arq >> d;
@@ -49,7 +50,7 @@ int menor_grau(int a[],int tam){
         for(int j = 0; j < tam; j++){
             grau = grau + a[j + i*dim];
         }
-        if((primeiro || grau < menor) && vetCores[i] == 0){
+        if((primeiro || grau < menor) && vetcores[i] == 0){
             primeiro = false;
             menor = grau;
             vertice_menor_grau =i;
@@ -61,7 +62,7 @@ int menor_grau(int a[],int tam){
 int* retornaMatriz(){
     int dimensao;
     int *a;
-    ifstream arq("grafo.txt",std::ifstream::in);
+    ifstream arq(arquivo.c_str(),std::ifstream::in);
     if(arq.is_open()){
         arq >> dimensao;
         //cout << "Dimensao: "<< dimensao <<endl;
@@ -76,8 +77,8 @@ int* retornaMatriz(){
 
 void zera_aresta(int *a,int dim, int v){
 
-if(vetCores[v] == 0){
-    vetCores[v] = -1;
+if(vetcores[v] == 0){
+    vetcores[v] = -1;
 }
 
     for(int i = 0; i < dim; i++){
@@ -90,9 +91,10 @@ if(vetCores[v] == 0){
 }
 
 int main(){
-    clock_t tStart = clock();
+    clock_t tStart;
+    double tfor = 0;
     dim = retornaDimensao();
-    vetCores = new int[dim];
+    vetcores = new int[dim];
     int *u = retornaMatriz();
     int *w = new int[dim*dim];
     int vzin;
@@ -100,21 +102,21 @@ int main(){
 
     //inicializa o vetor de cores
     for (int i=0; i<dim; i++){
-        vetCores[i] = 0;
+        vetcores[i] = 0;
     }
 
-    while (ha_elementos_a_colorir(vetCores, dim)){
+    while (ha_elementos_a_colorir(vetcores, dim)){
         memcpy(w, u, dim*dim*sizeof(int));// w = u
         for(int i = 0; i < dim; i++){
-            if(vetCores[i] == -1){
-                vetCores[i] = 0;
+            if(vetcores[i] == -1){
+                vetcores[i] = 0;
             }
         }
         //cout << "cor: " << cor_atual << endl;
         while(possuiAresta(w,dim*dim)){
             //cout << "--------------------------------------------" << endl;
             vzin = menor_grau(w,dim);// acha o vertice de menor grau em w
-            vetCores[vzin] = cor_atual ;// colore
+            vetcores[vzin] = cor_atual ;// colore
 
             /*for (int i = 0; i < dim; i++){
                 for(int j = 0; j < dim; j++){
@@ -123,8 +125,9 @@ int main(){
                 cout << endl;
              }*/
              //cout << "vzin: " << vzin << endl;
-
+            tStart = clock();
             for(int i = 0; i < dim; i++){
+
                 if(vzin == i){
                     for(int j =0; j < dim; j++){
                         if(w[j +i*dim] == 1){
@@ -135,17 +138,41 @@ int main(){
                     zera_aresta(u,dim,i);
                 }
             }
+            tfor += ((double)(clock() - tStart)/CLOCKS_PER_SEC);
+            // cout << "vetcores: ";
+            // for (int i = 0; i < dim; ++i)
+            // {
+            //     cout << vetcores[i] << ", ";
+            // }
+            // cout  << endl;
+
+            // cout << "w: \n";
+            // for (int i = 0; i < dim*dim; ++i)
+            // {
+            //     cout << w[i] << ", ";
+            //     if(i%dim == dim-1)
+            //         cout << endl;
+            // }
+            // cout  << endl;
+
+            // cout << "u: \n";
+            // for (int i = 0; i < dim*dim; ++i)
+            // {
+            //     cout << u[i] << ", ";
+            //     if(i%dim == dim-1)
+            //         cout << endl;
+            // }
+            // cout  << endl;
         }
         cor_atual++;
     }
 
     for(int i = 0; i < dim; i++){
-        cout << "vetCores[" << i << "]: " << vetCores[i] << endl;
+         // cout << "vetcores[" << i << "]: " << vetcores[i] << endl;
     }
-    cout << "Tempo de execução: " << ((double)(clock() - tStart)/CLOCKS_PER_SEC) << " segundos" << endl;
+    
     //ompwtime
-
+    cout << tfor;
     return 0;
 }
-
 

@@ -11,7 +11,7 @@ int dim;
 int *vetCores;
 
 int retornaDimensao(){
-  ifstream arq ("grafo.txt",std::ifstream::in);
+  ifstream arq ("./grafos/grafo5.txt",std::ifstream::in);
   int d = 0;
   if(arq.is_open()){
     arq >> d;
@@ -68,7 +68,6 @@ int* retornaMatriz(){
     ifstream arq("grafo.txt",std::ifstream::in);
     if(arq.is_open()){
         arq >> dimensao;
-        //cout << "Dimensao: "<< dimensao <<endl;
         a = new int[dimensao*dimensao];
         for(int i=0;i<dimensao*dimensao;i++){
             arq >> a[i];
@@ -83,7 +82,6 @@ void zera_aresta(int *a,int dim, int v){
 if(vetCores[v] == 0){
     vetCores[v] = -1;
 }
-    //#pragma omp parallel for
     for(int i = 0; i < dim; i++){
         if(i == v){
             for(int j = 0; j < dim; j++){
@@ -94,7 +92,7 @@ if(vetCores[v] == 0){
 }
 
 int main(){
-    clock_t tStart = clock();
+    
     dim = retornaDimensao();
     vetCores = new int[dim];
     int *u = retornaMatriz();
@@ -103,10 +101,11 @@ int main(){
     int cor_atual = 1;
 
     //inicializa o vetor de cores
+    clock_t tStart = clock();
     for (int i=0; i<dim; i++){
         vetCores[i] = 0;
     }
-
+    cout << "Tempo gerar matriz: " << ((double)(clock() - tStart)/CLOCKS_PER_SEC)/4 << " segundos" << endl;
     while (ha_elementos_a_colorir(vetCores, dim)){
         memcpy(w, u, dim*dim*sizeof(int));// w = u
         for(int i = 0; i < dim; i++){
@@ -114,20 +113,9 @@ int main(){
                 vetCores[i] = 0;
             }
         }
-        //cout << "cor: " << cor_atual << endl;
         while(possuiAresta(w,dim*dim)){
-            //cout << "--------------------------------------------" << endl;
             vzin = menor_grau(w,dim);// acha o vertice de menor grau em w
             vetCores[vzin] = cor_atual ;// colore
-
-            /*for (int i = 0; i < dim; i++){
-                for(int j = 0; j < dim; j++){
-                  cout << w[j + i*dim] << " ";
-                }
-                cout << endl;
-             }*/
-             //cout << "vzin: " << vzin << endl;
-
             #pragma omp parallel for num_threads(4)
             for(int i = 0; i < dim; i++){
                 if(vzin == i){

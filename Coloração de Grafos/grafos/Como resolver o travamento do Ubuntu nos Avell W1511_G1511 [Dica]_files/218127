@@ -1,0 +1,96 @@
+
+(function (window, undefined) {
+	"use strict";
+	if (!mplx) {
+	  var mplx = {};
+	}
+	mplx.outVars = {
+		"mpcke": "<mpcke/>",
+		"mpi": "<mpi/>",
+		"mpcrgif": "<mpcrgif/>",
+		"mpcrw": "<mpcrw/>",
+		"mpcrh": "<mpcrh/>",
+		"mpadmarker": "<mpadmarker/>",
+		"mpadmarkerurl": "<mpadmarkerurl/>",
+		"mpcrflash": "<mpcrflash/>",
+		"mpcrid": "<mpcrid/>",
+		"geozip": "<geozip/>",
+		"geocity": "<geocity/>",
+		"geoareacode": "<geoareacode/>",
+		"geocountry": "<geocountry/>",
+		"geostate": "<geostate/>",
+		"geotz": "<geotz/>",
+		"geocontinent": "<geocontinent/>",
+		"geodma": "<geodma/>",
+		"ptoffsetyear": "<ptoffsetyear/>",
+		"ptoffsetmonth": "<ptoffsetmonth/>",
+		"ptoffsetday": "<ptoffsetday/>",
+		"ptoffsethour": "<ptoffsethour/>",
+		"ptoffsetmin": "<ptoffsetmin/>",
+		"refdomain": "<refdomain/>",
+		"placementid": "<placementid/>",
+		"mpaltexp": "<mpaltexp/>",
+		"mpaltflash": "<mpaltflash/>",
+		"mpanimate": "<mpanimate/>",
+		"mpauto": "<mpauto/>",
+		"mpcrflash2": "<mpcrflash2/>",
+		"mpcrflv": "<mpcrflv/>",
+		"mpcrgif2": "<mpcrgif2/>",
+		"mpcrn": "<mpcrn/>",
+		"mpcrn_aol": "<mpcrn_aol/>",
+		"mpcrpv": "<mpcrpv/>",
+		"mpcrwin": "<mpcrwin/>",
+		"mpcrwinex": "<mpcrwinex/>",
+		"mpcrx": "<mpcrx/>",
+		"mpcrxh": "<mpcrxh/>",
+		"mpcrxw": "<mpcrxw/>",
+		"mpcry": "<mpcry/>",
+		"mpcrz": "<mpcrz/>",
+		"mpexdelay": "<mpexdelay/>",
+		"mpexpandspeed": "<mpexpandspeed/>",
+		"mphd": "<mphd/>",
+		"mpmouseout": "<mpmouseout/>",
+		"mpocd": "<mpocd/>",
+		"mpoverflow": "<mpoverflow/>",
+		"mpovrly": "<mpovrly/>",
+		"mppshdwn": "<mppshdwn/>",
+		"mpretdelay": "<mpretdelay/>",
+		"mprmtype": "<mprmtype/>",
+		"mpretractspeed": "<mpretractspeed/>",
+		"mpsingle": "<mpsingle/>",
+		"mpsv": "<mpsv/>",
+		"mpswfoffset": "<mpswfoffset/>",
+		"mpvd": "<mpvd/>",
+		"mpssl": "1",
+		"mpck": "adfarm.mediaplex.com/ad/ck/12255-243750-2056-9?mpt=958056907&mpcr=102345173&mpcrset=root",
+		"mpvc": "https://www.googleadservices.com/pagead/aclk?sa=L&ai=C79mMqlI1W8OvKo6ShwfP3rX4CJ_8ra5Sz7fo9aIHwI23ARABINWVjQJgzYCAgPwCoAHEgZvsA8gBCakCbolBmrVukT6oAwGqBOUBT9AIse0DoQ3Kjhs-jls2-pfSDLQsmEv3iB4arRl_XyiVb5P3bWuKTvwCz_D2y-Xp1r-JC-MpUT97MUTXbpWlv64Pae84YEveHS7xxHlwfU9xG4bObNyf-cA8PavUWT_iF2miQPdEDsWnyxKkqN9dE5RfWDmK6jENL3sQH6OY5Fjww5KetNRPcFPYe9HZ0FvUNz3Hq7GIjjSkyMqMER9HWSmXhrURKs51xP_GGPw60ca2ZXI56545Li-nEGliRZSwcvbOlLDjg8Bm8CVlghMnrUq_rBMZ37MC_0VELJqGPfcrZbMJsKAGEYAHkI6lHqgHjs4bqAfVyRuoB9nLG6gHz8wbqAemvhuoB5jOG9gHANIIBwiAYRABGAKACgHYEwI&num=1&cid=CAASEuRo-K1dtgKH_4xVhID8xCU9nw&sig=AOD64_1y1-IkBC25CtTDkyNO3Itcg_wWMg&client=ca-pub-3535276187000580&adurl="
+	};
+
+	mplx.mpqs = "mpt=958056907";
+	mplx.mpqs = (mplx.mpqs !== "") ? mplx.mpqs : "";
+	for (var props in mplx.outVars) {
+		if (mplx.outVars[props].indexOf("/>") < 0 ) {
+			mplx.mpqs += "&" + props + "=" + encodeURIComponent(mplx.outVars[props]);
+		}
+	}
+
+	mplx.iFrameSrc = (mplx.outVars.mpssl == 1 ? "https://img.mediaplex.com/content/0" : "http://img.mediaplex.com/content/0") + "/12255/256396_br_cs_sb_dir_fy19q2w8_ba_MPHTML-VostroEagle-ci5-3239-SelecaodeOfertas_300x250_VAR.html" + "?" + mplx.mpqs;
+	mplx.mojoframe = '<iframe border="0" src="' + mplx.iFrameSrc + '" width="300" height="250" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no" bordercolor="#000000"></iframe>';
+	document.write(mplx.mojoframe);
+
+	mplx.randJSI = Math.floor(Math.random()*100000+1);
+	document.write('<div id="mojoJSI_' + mplx.randJSI +'" style="height:0px; width:0px;"></div>');
+	mplx.mpjs = String("https://cdn.doubleverify.com/dvtp_src.js?ctx=10972573&cmp=243750&sid=2056&plc=1225524375020569&num=&adid=&advid=236&adsrv=8&region=30&btreg=1225524375020569&btadsrv=mediaplex&crt=102345173&dvp_plcd=12255-243750-2056-9&crtname=&chnl=&unit=&pid=&uid=&tagtype=&dvtagver=6.1.src https://c.betrad.com/durly.js?;ad_w=160;ad_h=600;coid=358;nid=77800;crid=1884;check_container=true; https://t.myvisualiq.net/sync?prid=Test&ao=841&vndr=117&red=https%3A%2F%2Fadfarm.mediaplex.com%2Fad%2Fim%2F13044-85265-63530-0%3Fmpaltsys%3D46%26mpalt%3D%24%7BUUID%7D https://tapestry.tapad.com/tapestry/1?ta_partner_id=950&ta_redirect=https%3A%2F%2Ft.myvisualiq.net%2Fsync%3Fprid%3D1001%26ao%3D0%26pruuid%3DTAPAD_%24%7BIDS%3Akey%7D");
+	if (mplx.mpjs && typeof mplx.mpjs === "string" && mplx.mpjs.length > 0 && mplx.mpjs!="<mp"+"jsp/>") {
+		mplx.mpscr = {};
+		mplx.mojoTiny = document.getElementById("mojoJSI_" + mplx.randJSI);
+		mplx.mpjs = mplx.mpjs.split( " " );
+		for( var i = 0; i < mplx.mpjs.length; i++ ) {
+			mplx.mpscr = document.createElement("script");
+			mplx.mpscr.type = "text/javascript";
+			mplx.mpscr.async = true;
+			mplx.mpscr.src = mplx.mpjs[i];
+			mplx.mojoTiny.appendChild(mplx.mpscr);
+		}
+	}
+})(window);
