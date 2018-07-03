@@ -92,6 +92,7 @@ if(vetcores[v] == 0){
 
 int main(){
     clock_t tStart;
+    clock_t texec = clock();
     double tfor = 0;
     dim = retornaDimensao();
     vetcores = new int[dim];
@@ -167,12 +168,14 @@ int main(){
         cor_atual++;
     }
 
+    cout << "Tempo de execução do for: " << tfor << endl;
+    cout << "Tempo de execução do algoritmo: " << ((double)(clock() - texec)/CLOCKS_PER_SEC) << endl;
+    cout << "-------------------------------------------------------" << endl;
+    cout << "Saida do vetor contendo os vértices coloridos: " << endl;
     for(int i = 0; i < dim; i++){
-         // cout << "vetcores[" << i << "]: " << vetcores[i] << endl;
+        cout << "vetcores[" << i << "]: " << vetcores[i] << endl;
     }
     
-    //ompwtime
-    cout << tfor;
     return 0;
 }
 

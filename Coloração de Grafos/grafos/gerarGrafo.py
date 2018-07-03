@@ -159,21 +159,19 @@ colocar1(32,34)
 
 colocar1(33,34)
 
-#Pagar matérias
-#primeiro periodo com o terceiro
 colocar1(27,25)
 colocar1(30,22)
 
 #quinto com terceiro
 colocar1(18,23)
 
-#quinto sétimo
+#quinto setimo
 colocar1(11,18)
 
 #setimo com terceiro
 colocar1(14,22)
 
-#nono com o śétimo
+#nono com o setimo
 colocar1(4,10)
 colocar1(6,12)
 
@@ -369,7 +367,7 @@ def draw_graph(graph):
     	elif(G.nodes[i]['cor'] == 7):
     		color_map.append("pink")
     	elif(G.nodes[i]['cor'] == 8):
-    		color_map.append("orange+")
+    		color_map.append("orange")
     	else:
     		color_map.append("red")
 
@@ -378,13 +376,6 @@ def draw_graph(graph):
     plt.show()
 
 draw_graph(grafo)
-
-
-
-
-
-
-
 
 with open('horario.csv', 'w', newline='') as file:
 	write = csv.writer(file, delimiter=' ')

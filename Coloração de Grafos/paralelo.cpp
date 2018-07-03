@@ -9,9 +9,10 @@ using namespace std;
 
 int dim;
 int *vetCores;
+string arquivo = "grafo2500.txt";
 
 int retornaDimensao(){
-  ifstream arq ("./grafos/grafo5.txt",std::ifstream::in);
+  ifstream arq (arquivo.c_str(),std::ifstream::in);
   int d = 0;
   if(arq.is_open()){
     arq >> d;
@@ -31,6 +32,7 @@ bool ha_elementos_a_colorir (int vet[], int tam){
 }
 
 bool possuiAresta (int vet[], int tam){
+
     for (int i=0; i< tam; i++){
         if (vet[i] == 1){
             return true;
@@ -46,12 +48,12 @@ int menor_grau(int a[],int tam){
     bool primeiro = true;
     int vertice_menor_grau;
 
-    #pragma omp parallel for num_threads(4)
+    //#pragma omp parallel for num_threads(4)
     for(int i = 0; i < tam; i++){
         grau = 0;
-        //#pragma omp parallel for private (temp) reduction (+:grau)
+        #pragma omp parallel for reduction (+:temp)
         for(int j = 0; j < tam; j++){
-            temp = temp + a[j + i*dim];
+            temp += a[j + i*dim];
         }
         if((primeiro || grau < menor) && vetCores[i] == 0){
             primeiro = false;
@@ -65,7 +67,7 @@ int menor_grau(int a[],int tam){
 int* retornaMatriz(){
     int dimensao;
     int *a;
-    ifstream arq("grafo.txt",std::ifstream::in);
+    ifstream arq(arquivo.c_str(),std::ifstream::in);
     if(arq.is_open()){
         arq >> dimensao;
         a = new int[dimensao*dimensao];
@@ -79,9 +81,10 @@ int* retornaMatriz(){
 
 void zera_aresta(int *a,int dim, int v){
 
-if(vetCores[v] == 0){
-    vetCores[v] = -1;
-}
+    if(vetCores[v] == 0){
+        vetCores[v] = -1;
+    }
+    #pragma omp parallel for num_threads(4)
     for(int i = 0; i < dim; i++){
         if(i == v){
             for(int j = 0; j < dim; j++){
@@ -92,22 +95,24 @@ if(vetCores[v] == 0){
 }
 
 int main(){
-    
+    clock_t tStart;
+    clock_t texec = clock();
+    double tfor = 0;
     dim = retornaDimensao();
     vetCores = new int[dim];
     int *u = retornaMatriz();
     int *w = new int[dim*dim];
     int vzin;
     int cor_atual = 1;
-
     //inicializa o vetor de cores
-    clock_t tStart = clock();
+    
+    #pragma omp parallel for num_threads(4)
     for (int i=0; i<dim; i++){
         vetCores[i] = 0;
     }
-    cout << "Tempo gerar matriz: " << ((double)(clock() - tStart)/CLOCKS_PER_SEC)/4 << " segundos" << endl;
     while (ha_elementos_a_colorir(vetCores, dim)){
         memcpy(w, u, dim*dim*sizeof(int));// w = u
+        #pragma omp parallel for num_threads(4)
         for(int i = 0; i < dim; i++){
             if(vetCores[i] == -1){
                 vetCores[i] = 0;
@@ -116,7 +121,8 @@ int main(){
         while(possuiAresta(w,dim*dim)){
             vzin = menor_grau(w,dim);// acha o vertice de menor grau em w
             vetCores[vzin] = cor_atual ;// colore
-            #pragma omp parallel for num_threads(4)
+            tStart = clock();
+            //#pragma omp parallel for num_threads(4)
             for(int i = 0; i < dim; i++){
                 if(vzin == i){
                     for(int j =0; j < dim; j++){
@@ -128,15 +134,20 @@ int main(){
                     zera_aresta(u,dim,i);
                 }
             }
+            tfor += ((double)(clock() - tStart)/CLOCKS_PER_SEC);
         }
         cor_atual++;
+        //cout << cor_atual << endl;
     }
-
+    
+    
+    cout << "Tempo de execução do for: " << tfor/4 << endl;
+    cout << "Tempo de execução do algoritmo: " << ((double)(clock() - texec)/CLOCKS_PER_SEC)/4 << endl;
+    cout << "-------------------------------------------------------" << endl;
+    cout << "Saida do vetor contendo os vértices coloridos: " << endl;
     for(int i = 0; i < dim; i++){
-        cout << "vetCores[" << i << "]: " << vetCores[i] << endl;
+        cout << "vetcores[" << i << "]: " << vetCores[i] << endl;
     }
-    cout << "Tempo de execução: " << ((double)(clock() - tStart)/CLOCKS_PER_SEC)/4 << " segundos" << endl;
-    //ompwtime
 
     return 0;
 }
